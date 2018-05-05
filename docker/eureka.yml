@@ -6,3 +6,11 @@ services:
       context: ../service-registry
     ports:
       - "8761:8761"
+    networks:
+      - frontend      
+      - backend      
+networks:
+   frontend:
+    driver: bridge
+   backend:
+    driver: bridge
