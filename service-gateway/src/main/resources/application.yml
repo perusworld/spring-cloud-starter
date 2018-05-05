@@ -1,0 +1,13 @@
+server:
+  port: ${PORT:8080}
+management:
+  server:
+    port: ${MANAGEMENT_PORT:9080}
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVER_ADDRESS:http://localhost:8761/eureka}
+zuul:
+    prefix: /api

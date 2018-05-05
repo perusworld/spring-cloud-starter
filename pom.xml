@@ -73,5 +73,6 @@
 		<module>service-registry</module>
 		<module>sample-api</module>
 		<module>sample-rest-service</module>
+		<module>service-gateway</module>
 	</modules>
 </project>
