@@ -1,0 +1,18 @@
+version: '3'
+services:
+  sample-rest-service:
+    container_name: sample-rest-service
+    build: 
+      context: ../sample-rest-service
+    ports:
+      - "8081:8081"
+    environment:
+      EUREKA_SERVER_ADDRESS: http://eureka:8761/eureka
+    networks:
+      - frontend      
+      - backend      
+networks:
+   frontend:
+    driver: bridge
+   backend:
+    driver: bridge
