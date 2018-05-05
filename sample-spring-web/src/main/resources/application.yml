@@ -1,0 +1,5 @@
+server:
+  port: ${PORT:8000}
+management:
+  server:
+    port: ${MANAGEMENT_PORT:9000}
