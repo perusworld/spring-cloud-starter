@@ -67,6 +67,7 @@ public class SampleRESTServiceControllerTest {
 		assertEquals(request.getADate(), response.getADate());
 		assertEquals(request.getAnInteger(), response.getAnInteger());
 		assertEquals(request.getAString(), response.getAString());
+		log.info(response.toString());
 	}
 
 }
