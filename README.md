@@ -16,6 +16,21 @@ cd docker
 docker-compose -f eureka.yml stop
 docker-compose -f core-services-docker-compose.yml stop
 ```
+### Test
+```bash
+mvn compile test
+```
+### Startup Backend Services During UI Dev
+```bash
+mvn package
+cd docker
+docker-compose -f services-docker-compose up -d
+```
+### Stop Backend Services During UI Dev
+```bash
+cd docker
+docker-compose -f services-docker-compose stop
+```
 ### Dev Instance URLs
 [Rabbit MQ](http://localhost:15672/) (uid/pwd - guest/guest)
 
