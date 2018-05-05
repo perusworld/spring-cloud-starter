@@ -1,3 +1,6 @@
 spring:
   application:
-    name: Sample REST Service
+    name: sample-rest-service
+eureka:
+  instance:
+    preferIpAddress: true
