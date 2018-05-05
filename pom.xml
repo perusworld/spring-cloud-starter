@@ -74,5 +74,6 @@
 		<module>sample-api</module>
 		<module>sample-rest-service</module>
 		<module>service-gateway</module>
+		<module>sample-spring-web</module>
 	</modules>
 </project>

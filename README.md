@@ -34,6 +34,19 @@ docker-compose -f services-docker-compose.yml up -d
 cd docker
 docker-compose -f services-docker-compose.yml stop
 ```
+### Startup Web
+```bash
+mvn package
+cd docker
+docker-compose -f web-docker-compose.yml build
+docker-compose -f web-docker-compose.yml up -d
+```
+### Stop Web
+```bash
+cd docker
+docker-compose -f web-docker-compose.yml stop
+```
+
 ### Dev Instance URLs
 
 | Service | URL | UID/PWD | Health | URL via Gateway |
@@ -44,3 +57,4 @@ docker-compose -f services-docker-compose.yml stop
 | Service Registry | [http://localhost:8761](http://localhost:8761) | | | |
 | Service Gateway | [http://localhost:8080](http://localhost:8080) | | [http://localhost:9080/actuator/health](http://localhost:9080/actuator/health) | [http://localhost:8080/api/sample-rest-service/](http://localhost:8080/api/sample-rest-service/) |
 | Sample REST Service | [http://localhost:8081/](http://localhost:8081/) | | [http://localhost:9081/actuator/health](http://localhost:9081/actuator/health) | |
+| Sample Spring Web | [http://localhost:8000/](http://localhost:8000/) | | [http://localhost:9000/actuator/health](http://localhost:9000/actuator/health) | |
