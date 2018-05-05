@@ -1,5 +1,8 @@
 server:
   port: ${PORT:8081}
+management:
+  server:
+    port: ${MANAGEMENT_PORT:9081}
 eureka:
   client:
     serviceUrl:
