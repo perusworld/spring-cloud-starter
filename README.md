@@ -24,12 +24,12 @@ mvn compile test
 ```bash
 mvn package
 cd docker
-docker-compose -f services-docker-compose up -d
+docker-compose -f services-docker-compose.yml up -d
 ```
 ### Stop Backend Services During UI Dev
 ```bash
 cd docker
-docker-compose -f services-docker-compose stop
+docker-compose -f services-docker-compose.yml stop
 ```
 ### Dev Instance URLs
 [Rabbit MQ](http://localhost:15672/) (uid/pwd - guest/guest)
