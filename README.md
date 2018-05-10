@@ -55,6 +55,6 @@ docker-compose -f web-docker-compose.yml stop
 | Postgres Admin | [http://localhost:5431](http://localhost:5431) | user@db.com/pwd | | |
 | Mongo Admin | [http://localhost:27016](http://localhost:27016) | | | |
 | Service Registry | [http://localhost:8761](http://localhost:8761) | | | |
-| Service Gateway | [http://localhost:8080](http://localhost:8080) | | [http://localhost:9080/actuator/health](http://localhost:9080/actuator/health) | [http://localhost:8080/api/sample-rest-service/](http://localhost:8080/api/sample-rest-service/) |
-| Sample REST Service | [http://localhost:8081/](http://localhost:8081/) | | [http://localhost:9081/actuator/health](http://localhost:9081/actuator/health) | |
-| Sample Spring Web | [http://localhost:8000/](http://localhost:8000/) | | [http://localhost:9000/actuator/health](http://localhost:9000/actuator/health) | |
+| Service Gateway | [http://localhost:8080](http://localhost:8080) | | [http://localhost:9080/actuator/health](http://localhost:9080/actuator/health) | |
+| Sample REST Service | [http://localhost:8081/](http://localhost:8081/) | | [http://localhost:9081/actuator/health](http://localhost:9081/actuator/health) | [http://localhost:8080/sample-rest-service/](http://localhost:8080/api/sample-rest-service/) |
+| Sample Spring Web | [http://localhost:8082/](http://localhost:8082/) | | [http://localhost:9082/actuator/health](http://localhost:9082/actuator/health) | [http://localhost:8080/sample-spring-web/](http://localhost:8080/sample-spring-web/) |
