@@ -1,3 +1,6 @@
 spring:
   application:
     name: sample-spring-web
+eureka:
+  instance:
+    preferIpAddress: true
