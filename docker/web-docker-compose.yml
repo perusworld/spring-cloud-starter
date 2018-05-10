@@ -5,8 +5,11 @@ services:
     build: 
       context: ../sample-spring-web
     ports:
-      - "8000:8000"
-      - "9000:9000"
+      - "8082:8082"
+      - "9082:9082"
+    environment:
+      EUREKA_SERVER_ADDRESS: http://registry:8761/eureka
+      CONTEXT_PATH: /sample-spring-web
     networks:
       - frontend      
       - backend      
