@@ -5,6 +5,9 @@ server:
 management:
   server:
     port: ${MANAGEMENT_PORT:8092}
+sample:
+  restservice:
+    url: ${SAMPLE_REST_SERVICE_URL:http://localhost:8081}
 eureka:
   client:
     serviceUrl:

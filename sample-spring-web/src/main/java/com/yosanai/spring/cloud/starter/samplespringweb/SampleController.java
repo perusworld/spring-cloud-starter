@@ -2,19 +2,50 @@ package com.yosanai.spring.cloud.starter.samplespringweb;
 
 import java.util.Date;
 
+import org.apache.commons.lang.RandomStringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.client.RestTemplate;
+
+import com.yosanai.spring.cloud.starter.sampleapi.SampleRequest;
+import com.yosanai.spring.cloud.starter.sampleapi.SampleResponse;
 
 @Controller
 public class SampleController {
+
+	@Autowired
+	private RestTemplate restTemplate;
+
+	@Value("${sample.restservice.url}")
+	private String sampleRESTServiceURL;
+
+	protected String getURL(String suffix) {
+		return String.format("%s/%s", sampleRESTServiceURL, suffix);
+	}
+
 	@GetMapping("/")
 	public String getIndex() {
 		return "index-page";
 	}
+
 	@GetMapping("/sample-page")
 	public String getSamplePage(Model model) {
 		model.addAttribute("now", new Date());
 		return "sample/sample-page";
+	}
+
+	@GetMapping("/call-api")
+	public String callSampleRestService(Model model) {
+		SampleRequest request = new SampleRequest(RandomStringUtils.random(10, true, true),
+				Integer.parseInt(RandomStringUtils.random(5, false, true)), new Date());
+		SampleResponse response = restTemplate.postForObject(getURL("sample-api"), new HttpEntity<>(request),
+				SampleResponse.class);
+		model.addAttribute("url", getURL(""));
+		model.addAttribute("resp", response);
+		return "call-api/response";
 	}
 }
