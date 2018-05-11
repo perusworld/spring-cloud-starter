@@ -12,6 +12,21 @@ services:
     networks:
       - frontend      
       - backend      
+  sample-amqp-service:
+    container_name: sample-amqp-service
+    build: 
+      context: ../sample-amqp-service
+    ports:
+      - "9083:9083"
+    environment:
+      EUREKA_SERVER_ADDRESS: http://registry:8761/eureka
+      AMQP_SERVER_ADDRESS: rabbitmq
+      AMQP_SERVER_PORT: 5672
+      AMQP_SERVER_USERNAME: guest
+      AMQP_SERVER_PASSWORD: guest
+    networks:
+      - frontend      
+      - backend      
 networks:
    frontend:
     driver: bridge
