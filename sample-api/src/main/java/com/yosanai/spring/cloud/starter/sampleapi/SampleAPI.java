@@ -1,5 +1,6 @@
 package com.yosanai.spring.cloud.starter.sampleapi;
 
+import java.util.Date;
 import java.util.concurrent.CompletableFuture;
 
 public class SampleAPI {
@@ -10,6 +11,7 @@ public class SampleAPI {
 			resp.setADate(request.getADate());
 			resp.setAnInteger(request.getAnInteger());
 			resp.setAString(request.getAString());
+			resp.setUpdatedAt(new Date());
 			return resp;
 		});
 	}
