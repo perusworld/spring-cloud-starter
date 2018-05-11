@@ -3,6 +3,7 @@ package com.yosanai.spring.cloud.starter.samplespringweb;
 import java.util.Date;
 
 import org.apache.commons.lang.RandomStringUtils;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
@@ -22,6 +23,15 @@ public class SampleController {
 
 	@Value("${sample.restservice.url}")
 	private String sampleRESTServiceURL;
+
+	@Autowired
+	private RabbitTemplate rabbitTemplate;
+
+	@Value("${sample.amqpservice.topicExchange}")
+	private String topicExchange;
+
+	@Value("${sample.amqpservice.routingKey}")
+	private String routingKey;
 
 	protected String getURL(String suffix) {
 		return String.format("%s/%s", sampleRESTServiceURL, suffix);
@@ -47,5 +57,13 @@ public class SampleController {
 		model.addAttribute("url", getURL(""));
 		model.addAttribute("resp", response);
 		return "call-api/response";
+	}
+
+	@GetMapping("/send-amqp-msg")
+	public String sendAMQPMessage(Model model) {
+		SampleRequest request = new SampleRequest(RandomStringUtils.random(10, true, true),
+				Integer.parseInt(RandomStringUtils.random(5, false, true)), new Date());
+		rabbitTemplate.convertAndSend(topicExchange, routingKey.replace("#", "web"), request);
+		return "amqp/send";
 	}
 }

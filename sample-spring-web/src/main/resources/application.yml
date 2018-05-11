@@ -5,9 +5,18 @@ server:
 management:
   server:
     port: ${MANAGEMENT_PORT:8092}
+spring:
+  rabbitmq:
+    host: ${AMQP_SERVER_ADDRESS:localhost}
+    port: ${AMQP_SERVER_PORT:5672}
+    username: ${AMQP_SERVER_USERNAME:guest}
+    password: ${AMQP_SERVER_PASSWORD:guest}
 sample:
   restservice:
     url: ${SAMPLE_REST_SERVICE_URL:http://localhost:8081}
+  amqpservice:
+    topicExchange: amq.topic
+    routingKey: sample.routing.key.#
 eureka:
   client:
     serviceUrl:
