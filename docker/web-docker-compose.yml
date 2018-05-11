@@ -10,6 +10,7 @@ services:
     environment:
       EUREKA_SERVER_ADDRESS: http://registry:8761/eureka
       CONTEXT_PATH: /sample-spring-web
+      SAMPLE_REST_SERVICE_URL: http://gateway:8080/sample-rest-service
     networks:
       - frontend      
       - backend      
