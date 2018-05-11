@@ -75,5 +75,6 @@
 		<module>sample-rest-service</module>
 		<module>service-gateway</module>
 		<module>sample-spring-web</module>
+		<module>sample-amqp-service</module>
 	</modules>
 </project>
