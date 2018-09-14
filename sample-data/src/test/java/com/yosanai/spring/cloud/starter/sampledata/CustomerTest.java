@@ -8,19 +8,10 @@ import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
-@RunWith(SpringRunner.class)
-@DataJpaTest
-@SpringBootTest(classes = TestConfig.class)
-public class CustomerTest {
+import com.yosanai.spring.cloud.starter.sampledata.model.Customer;
 
-	@Autowired
-	private CustomerRepository customerRepository;
+public class CustomerTest extends BaseTest {
 
 	@Before
 	public void init() {
@@ -33,27 +24,24 @@ public class CustomerTest {
 
 	@Test
 	public void checkInsert() {
-		Customer customer = new Customer("firstName", "lastName");
-		Customer savedCustomer = customerRepository.save(customer);
+		Customer savedCustomer = someCustomer();
 		assertNotNull(savedCustomer);
 		assertTrue(null != savedCustomer.getId());
+		assertTrue(null != savedCustomer.getSampleIgnoreInPublic());
 	}
 
 	@Test
 	public void checkFindByLastName() {
-		String lastName = "lastName";
-		customerRepository.save(new Customer("firstName1", lastName));
-		customerRepository.save(new Customer("firstName2", lastName));
-		customerRepository.save(new Customer("firstName3", lastName));
-		customerRepository.save(new Customer("firstName4", lastName));
-		customerRepository.save(new Customer("firstName5", lastName));
-		
-		List<Customer> customers = customerRepository.findByLastName(lastName);
+		String lastName = rndStr();
+		someCustomers(lastName, BATCH_SIZE);
+
+		List<Customer> customers = customerRepository.findAllByLastName(lastName);
 		assertNotNull(customers);
-		assertEquals(5,  customers.size());
+		assertEquals(BATCH_SIZE, customers.size());
 		for (Customer customer : customers) {
-			assertEquals(lastName,  customer.getLastName());
+			assertEquals(lastName, customer.getLastName());
 		}
 
 	}
+
 }
