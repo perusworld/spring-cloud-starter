@@ -1,4 +1,4 @@
-package com.yosanai.spring.cloud.starter.samplerestservice;
+package com.yosanai.spring.cloud.starter.samplerestservice.controller;
 
 import javax.validation.Valid;
 
