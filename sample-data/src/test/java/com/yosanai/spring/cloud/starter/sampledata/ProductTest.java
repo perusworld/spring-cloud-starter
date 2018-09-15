@@ -57,4 +57,12 @@ public class ProductTest extends BaseTest {
 			});
 		} while (!done);
 	}
+
+	@Test
+	public void checkFindByName() {
+		List<Product> saved = someProducts(BATCH_SIZE);
+		Product product = productRepository.findByName(saved.get(0).getName());
+		assertNotNull(product);
+		assertEquals(product.getId(), saved.get(0).getId());
+	}
 }
