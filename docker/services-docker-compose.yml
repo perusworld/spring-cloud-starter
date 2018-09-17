@@ -9,6 +9,9 @@ services:
       - "9081:9081"
     environment:
       EUREKA_SERVER_ADDRESS: http://registry:8761/eureka
+      DB_URL: jdbc:postgresql://postgresdb:5432/userdb
+      DB_USER: dbuser
+      DB_PWD: dbpwd
     networks:
       - frontend      
       - backend      

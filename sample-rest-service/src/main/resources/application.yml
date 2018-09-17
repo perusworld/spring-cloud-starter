@@ -19,7 +19,7 @@ spring:
       ddl-auto: update
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/userdb
-    username: dbuser
-    password: dbpwd
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/userdb}
+    username: ${DB_USER:dbuser}
+    password: ${DB_PWD:dbpwd}
     initialization-mode: never
