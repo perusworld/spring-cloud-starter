@@ -18,7 +18,7 @@
     <form method="POST" action="/logout"><button type="submit">Logout</button></form>
 </div>
 <th:block layout:fragment="scripts">
-    <script type="text/javascript" src="/js/user-page.js">
+    <script type="text/javascript" th:src="@{/js/user-page.js}">
     </script>
 </th:block>
 
