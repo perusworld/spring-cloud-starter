@@ -13,8 +13,16 @@ import com.yosanai.spring.cloud.starter.sampledata.repository.OrderSummary;
 public interface CustomerOrderRepository extends PagingAndSortingRepository<CustomerOrder, Long> {
 	public List<CustomerOrder> findAllByCustomer(Customer customer);
 
-	@Query("select cast(co.created as date) as orderDate, sum(co.totalCost) as salesAmount, count(co.id) as salesCount from CustomerOrder co, OrderItem oi where co.customer = :customer"
+	public List<CustomerOrder> findAllByCustomerId(Long id);
+
+	@Query("select new com.yosanai.spring.cloud.starter.sampledata.repository.OrderSummary(cast(co.created as date) as orderDate, sum(co.totalCost) as salesAmount, count(co.id) as salesCount)"
+			+ " from CustomerOrder co, OrderItem oi where co.customer = :customer"
 			+ " and oi.customerOrder = co group by cast(co.created as date) order by orderDate")
 	public Iterable<OrderSummary> orderSummaryByDay(@Param("customer") Customer customer);
+
+	@Query("select new com.yosanai.spring.cloud.starter.sampledata.repository.OrderSummary(cast(co.created as date) as orderDate, sum(co.totalCost) as salesAmount, count(co.id) as salesCount)"
+			+ " from CustomerOrder co, OrderItem oi where co.customer.id = :customerId"
+			+ " and oi.customerOrder = co group by cast(co.created as date) order by orderDate")
+	public List<OrderSummary> orderSummaryByDay(@Param("customerId") Long customerId);
 
 }

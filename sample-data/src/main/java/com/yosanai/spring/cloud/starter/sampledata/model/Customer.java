@@ -38,6 +38,7 @@ public class Customer extends Auditable {
 	@JsonView(Views.Internal.class)
 	private String sampleIgnoreInPublic;
 	@OneToMany(mappedBy = "customer", orphanRemoval = true)
+	@JsonView(Views.Internal.class)
 	private Set<CustomerOrder> orders;
 
 	public void addItem(CustomerOrder order) {

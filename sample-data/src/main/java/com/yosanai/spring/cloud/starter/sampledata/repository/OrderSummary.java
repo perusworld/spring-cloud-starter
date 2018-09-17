@@ -1,13 +1,26 @@
 package com.yosanai.spring.cloud.starter.sampledata.repository;
 
-import java.sql.Date;
+import java.util.Date;
 
-public interface OrderSummary {
+import com.fasterxml.jackson.annotation.JsonView;
+import com.yosanai.spring.cloud.starter.sampledata.Views;
 
-	public Date getOrderDate();
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
-	public int getSalesAmount();
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+@JsonView(Views.Public.class)
+public class OrderSummary {
 
-	public int getSalesCount();
+	private Date orderDate;
+	private long salesAmount;
+	private long salesCount;
 
 }

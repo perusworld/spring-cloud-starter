@@ -4,6 +4,7 @@ import static org.junit.Assert.assertNotNull;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.BiConsumer;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -96,17 +97,18 @@ public class BaseTest {
 		return customerOrderRepository.save(new CustomerOrder(customer));
 	}
 
-	public List<CustomerOrder> someCustomerOrdersWithItems(Customer customer, int size) {
-		List<CustomerOrder> ret = new ArrayList<>();
+	public void someCustomerOrdersWithItems(Customer customer, int size,
+			BiConsumer<List<Product>, List<CustomerOrder>> callback) {
+		List<CustomerOrder> orders = new ArrayList<>();
 		List<Product> products = someProducts(size);
 		for (int idx = 0; idx < size; idx++) {
 			CustomerOrder order = new CustomerOrder(customer);
 			for (int pIdx = 0; pIdx < RandomUtils.nextInt(1, products.size()); pIdx++) {
-				order.addItem(someOrderItem(products.get(pIdx)));
+				order.addOrderItem(someOrderItem(products.get(pIdx)));
 			}
-			ret.add(customerOrderRepository.save(order));
+			orders.add(customerOrderRepository.save(order));
 		}
-		return ret;
+		callback.accept(products, orders);
 	}
 
 	public OrderItem someOrderItem(Product product) {

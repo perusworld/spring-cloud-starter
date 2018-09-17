@@ -36,6 +36,7 @@ public class OrderItem implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(nullable = false)
+	@JsonView(Views.Internal.class)
 	private CustomerOrder customerOrder;
 
 	@ManyToOne

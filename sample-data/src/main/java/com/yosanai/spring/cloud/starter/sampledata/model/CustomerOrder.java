@@ -45,23 +45,25 @@ public class CustomerOrder extends Auditable {
 	private Customer customer;
 
 	@OneToMany(mappedBy = "customerOrder", orphanRemoval = true, cascade = CascadeType.ALL)
-	private Set<OrderItem> items;
+	private Set<OrderItem> orderItems;
 
 	private int totalCost;
 
-	public void addItem(OrderItem item) {
-		if (null == items) {
-			items = new HashSet<>();
+	public void addOrderItem(OrderItem item) {
+		if (null == orderItems) {
+			orderItems = new HashSet<>();
 		}
-		items.add(item);
+		orderItems.add(item);
 		item.setCustomerOrder(this);
+		calculateTotal();
 	}
 
-	public void removeItem(OrderItem item) {
-		if (null != items) {
-			items.remove(item);
+	public void removeOrderItem(OrderItem item) {
+		if (null != orderItems) {
+			orderItems.remove(item);
 		}
 		item.setCustomerOrder(null);
+		calculateTotal();
 	}
 
 	public CustomerOrder(Customer customer) {
@@ -73,8 +75,8 @@ public class CustomerOrder extends Auditable {
 	@PreUpdate
 	public void calculateTotal() {
 		totalCost = 0;
-		if (null != items) {
-			items.forEach(item -> {
+		if (null != orderItems) {
+			orderItems.forEach(item -> {
 				if (null != item.getProduct()) {
 					totalCost += item.getProduct().getCost() * item.getQuantity();
 				}
