@@ -21,3 +21,15 @@ eureka:
   client:
     serviceUrl:
       defaultZone: ${EUREKA_SERVER_ADDRESS:http://localhost:8761/eureka}
+security:
+  oauth2:
+    client:
+      clientId: ${FB_APP_ID:-your-fb-app-id-here-}
+      clientSecret: ${FB_APP_SECRET:-your-fb-app-secret-here-}
+      accessTokenUri: https://graph.facebook.com/oauth/access_token
+      userAuthorizationUri: https://www.facebook.com/dialog/oauth
+      tokenName: oauth_token
+      authenticationScheme: query
+      clientAuthenticationScheme: form
+    resource:
+      userInfoUri: https://graph.facebook.com/me

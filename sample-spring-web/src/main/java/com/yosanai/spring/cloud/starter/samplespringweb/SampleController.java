@@ -1,5 +1,6 @@
 package com.yosanai.spring.cloud.starter.samplespringweb;
 
+import java.security.Principal;
 import java.util.Date;
 
 import org.apache.commons.lang3.RandomStringUtils;
@@ -10,6 +11,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
 
 import com.yosanai.spring.cloud.starter.sampleapi.SampleRequest;
@@ -66,4 +68,11 @@ public class SampleController {
 		rabbitTemplate.convertAndSend(topicExchange, routingKey.replace("#", "web"), request);
 		return "amqp/send";
 	}
+
+	@RequestMapping("/user")
+	public String user(Principal principal, Model model) {
+		model.addAttribute("user", principal);
+		return "secure/user";
+	}
+
 }
