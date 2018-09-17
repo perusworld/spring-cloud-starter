@@ -36,8 +36,8 @@ public class SampleSpringWebApplication extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable().antMatcher("/**").authorizeRequests()
-				.antMatchers("/", "/login**", "/webjars/**", "/error**", "/sample-page", "/call-api", "/send-amqp-msg",
-						"/actuator/***")
+				.antMatchers("/", "/login**", "/webjars/**", "/js/***", "/error**", "/sample-page", "/call-api",
+						"/send-amqp-msg", "/actuator/***")
 				.permitAll().anyRequest().authenticated().and().logout().logoutSuccessUrl("/").permitAll();
 	}
 }
