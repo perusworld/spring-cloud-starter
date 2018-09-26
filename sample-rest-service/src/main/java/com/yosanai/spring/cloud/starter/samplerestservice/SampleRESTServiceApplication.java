@@ -12,7 +12,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import com.yosanai.spring.cloud.starter.sampleapi.SampleAPI;
 import com.yosanai.spring.cloud.starter.sampledata.model.Auditable;
-import com.yosanai.spring.cloud.starter.sampledata.projection.CustomerRepository;
+import com.yosanai.spring.cloud.starter.sampledata.repository.CustomerRepository;
 
 @EnableDiscoveryClient
 @EnableEurekaClient

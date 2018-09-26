@@ -1,4 +1,4 @@
-package com.yosanai.spring.cloud.starter.sampledata.repository;
+package com.yosanai.spring.cloud.starter.sampledata.projection;
 
 import java.util.Date;
 

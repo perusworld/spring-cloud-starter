@@ -16,7 +16,7 @@ import org.springframework.http.ResponseEntity;
 
 import com.yosanai.spring.cloud.starter.sampledata.model.Customer;
 import com.yosanai.spring.cloud.starter.sampledata.model.CustomerOrder;
-import com.yosanai.spring.cloud.starter.sampledata.repository.OrderSummary;
+import com.yosanai.spring.cloud.starter.sampledata.projection.OrderSummary;
 import com.yosanai.spring.cloud.starter.samplerestservice.controller.CustomerOrderController;
 
 import lombok.extern.java.Log;

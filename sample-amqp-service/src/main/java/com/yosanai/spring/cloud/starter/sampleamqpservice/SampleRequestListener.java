@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import com.yosanai.spring.cloud.starter.sampleapi.SampleAPI;
 import com.yosanai.spring.cloud.starter.sampleapi.SampleRequest;
+import com.yosanai.spring.cloud.starter.sampleapi.SampleResponse;
 
 import lombok.extern.java.Log;
 
@@ -19,8 +20,10 @@ public class SampleRequestListener {
 	@Autowired
 	private SampleAPI sampleAPI;
 
-	public void handleMessage(SampleRequest request) {
-		log.info("Got message " + request.toString());
+	public void handleMessage(SampleRequest request) throws Exception {
+		log.info("Got message " + request);
+		SampleResponse response = sampleAPI.call(request).get();
+		log.info("And the response " + response);
 		latch.countDown();
 	}
 

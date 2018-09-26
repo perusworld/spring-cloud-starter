@@ -23,9 +23,9 @@ import com.yosanai.spring.cloud.starter.sampledata.model.Customer;
 import com.yosanai.spring.cloud.starter.sampledata.model.CustomerOrder;
 import com.yosanai.spring.cloud.starter.sampledata.model.OrderItem;
 import com.yosanai.spring.cloud.starter.sampledata.model.Product;
-import com.yosanai.spring.cloud.starter.sampledata.projection.CustomerOrderRepository;
-import com.yosanai.spring.cloud.starter.sampledata.projection.CustomerRepository;
-import com.yosanai.spring.cloud.starter.sampledata.projection.ProductRepository;
+import com.yosanai.spring.cloud.starter.sampledata.repository.CustomerOrderRepository;
+import com.yosanai.spring.cloud.starter.sampledata.repository.CustomerRepository;
+import com.yosanai.spring.cloud.starter.sampledata.repository.ProductRepository;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest(includeFilters = {

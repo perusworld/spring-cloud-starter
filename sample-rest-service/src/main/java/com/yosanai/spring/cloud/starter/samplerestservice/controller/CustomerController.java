@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.yosanai.spring.cloud.starter.sampledata.Views;
 import com.yosanai.spring.cloud.starter.sampledata.model.Customer;
-import com.yosanai.spring.cloud.starter.sampledata.projection.CustomerRepository;
+import com.yosanai.spring.cloud.starter.sampledata.repository.CustomerRepository;
 import com.yosanai.spring.cloud.starter.samplerestservice.ResourceException;
 
 @RestController

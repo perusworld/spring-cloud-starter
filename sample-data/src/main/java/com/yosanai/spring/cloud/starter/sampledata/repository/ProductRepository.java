@@ -1,4 +1,4 @@
-package com.yosanai.spring.cloud.starter.sampledata.projection;
+package com.yosanai.spring.cloud.starter.sampledata.repository;
 
 import org.springframework.data.repository.PagingAndSortingRepository;
 
