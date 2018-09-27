@@ -8,7 +8,7 @@
       "name": "Sample Requests",
       "item": [
         {
-          "name": "customer/",
+          "name": "jpa/customer/",
           "request": {
             "method": "POST",
             "header": [
@@ -26,12 +26,13 @@
               "raw": "{\r\n  \"firstName\" : \"firstName1\",\r\n  \"lastName\" : \"lastName1\",\r\n  \"sampleIgnoreInPublic\" : \"sampleIgnoreInPublic1\"\r\n}"
             },
             "url": {
-              "raw": "{{host}}/customer/",
+              "raw": "{{host}}/jpa/customer/",
               "host": [
                 "{{host}}"
               ],
               "path": [
                 "",
+                "jpa",
                 "customer",
                 ""
               ]
@@ -39,7 +40,7 @@
           }
         },
         {
-          "name": "customer/1",
+          "name": "jpa/customer/4",
           "request": {
             "method": "GET",
             "header": [
@@ -50,20 +51,21 @@
             ],
             "body": null,
             "url": {
-              "raw": "{{host}}/customer/1",
+              "raw": "{{host}}/jpa/customer/4",
               "host": [
                 "{{host}}"
               ],
               "path": [
                 "",
+                "jpa",
                 "customer",
-                "1"
+                "4"
               ]
             }
           }
         },
         {
-          "name": "customer/",
+          "name": "jpa/customer/",
           "request": {
             "method": "GET",
             "header": [
@@ -74,12 +76,13 @@
             ],
             "body": null,
             "url": {
-              "raw": "{{host}}/customer/?page=0&size=2147483647",
+              "raw": "{{host}}/jpa/customer/?page=0&size=2147483647",
               "host": [
                 "{{host}}"
               ],
               "path": [
                 "",
+                "jpa",
                 "customer",
                 ""
               ],
@@ -97,7 +100,7 @@
           }
         },
         {
-          "name": "customer/search/findAllByLastName/lastName1",
+          "name": "jpa/customer/search/findAllByLastName/lastName1",
           "request": {
             "method": "GET",
             "header": [
@@ -108,12 +111,13 @@
             ],
             "body": null,
             "url": {
-              "raw": "{{host}}/customer/search/findAllByLastName/lastName1",
+              "raw": "{{host}}/jpa/customer/search/findAllByLastName/lastName1",
               "host": [
                 "{{host}}"
               ],
               "path": [
                 "",
+                "jpa",
                 "customer",
                 "search",
                 "findAllByLastName",

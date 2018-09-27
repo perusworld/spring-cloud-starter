@@ -1,7 +1,7 @@
 {
   "_type": "export",
   "__export_format": 3,
-  "__export_date": "2018-09-27T02:35:25.486Z",
+  "__export_date": "2018-09-27T18:36:57.025Z",
   "__export_source": "restdocs-to-postman:v2.0.1",
   "resources": [
     {
@@ -13,8 +13,8 @@
     },
     {
       "parentId": "__FOLDER_1__",
-      "name": "customer/",
-      "url": "{{host}}/customer/",
+      "name": "jpa/customer/",
+      "url": "{{host}}/jpa/customer/",
       "body": {
         "mimeType": "application/json",
         "text": "{\r\n  \"firstName\" : \"firstName1\",\r\n  \"lastName\" : \"lastName1\",\r\n  \"sampleIgnoreInPublic\" : \"sampleIgnoreInPublic1\"\r\n}"
@@ -37,8 +37,8 @@
     },
     {
       "parentId": "__FOLDER_1__",
-      "name": "customer/1",
-      "url": "{{host}}/customer/1",
+      "name": "jpa/customer/4",
+      "url": "{{host}}/jpa/customer/4",
       "body": {},
       "method": "GET",
       "parameters": [],
@@ -54,8 +54,8 @@
     },
     {
       "parentId": "__FOLDER_1__",
-      "name": "customer/",
-      "url": "{{host}}/customer/?page=0&size=2147483647",
+      "name": "jpa/customer/",
+      "url": "{{host}}/jpa/customer/?page=0&size=2147483647",
       "body": {},
       "method": "GET",
       "parameters": [],
@@ -71,8 +71,8 @@
     },
     {
       "parentId": "__FOLDER_1__",
-      "name": "customer/search/findAllByLastName/lastName1",
-      "url": "{{host}}/customer/search/findAllByLastName/lastName1",
+      "name": "jpa/customer/search/findAllByLastName/lastName1",
+      "url": "{{host}}/jpa/customer/search/findAllByLastName/lastName1",
       "body": {},
       "method": "GET",
       "parameters": [],

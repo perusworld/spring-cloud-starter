@@ -523,7 +523,7 @@ table.CodeRay td.code>pre{padding:0}
 <div class="details">
 <span id="author" class="author">Sample REST Service Documentation</span><br>
 <span id="revnumber">version 0.0.1,</span>
-<span id="revdate">2018-09-27 02</span>
+<span id="revdate">2018-09-27</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -533,10 +533,10 @@ table.CodeRay td.code>pre{padding:0}
 <ul class="sectlevel1">
 <li><a href="#resources-customer">1. Customer</a>
 <ul class="sectlevel2">
-<li><a href="#resource-customer-create">1.1. Create Customer</a></li>
-<li><a href="#resource-customer-get">1.2. Get Customer</a></li>
-<li><a href="#resource-customer-list">1.3. Get all Customers</a></li>
-<li><a href="#resource-customers-by-last-name">1.4. Get Customers by Last Name</a></li>
+<li><a href="#resource-jpa-customer-create">1.1. Create Customer</a></li>
+<li><a href="#resource-jpa-customer-get">1.2. Get Customer</a></li>
+<li><a href="#resource-jpa-customer-list">1.3. Get all Customers</a></li>
+<li><a href="#resource-jpa-customers-by-last-name">1.4. Get Customers by Last Name</a></li>
 </ul>
 </li>
 </ul>
@@ -556,12 +556,12 @@ table.CodeRay td.code>pre{padding:0}
 <h2 id="resources-customer">1. Customer</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="resource-customer-create">1.1. Create Customer</h3>
+<h3 id="resource-jpa-customer-create">1.1. Create Customer</h3>
 <div class="sect3">
 <h4 id="_request_structure">1.1.1. Request structure</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="http">POST /customer/ HTTP/1.1
+<pre class="CodeRay highlight nowrap"><code data-lang="http">POST /jpa/customer/ HTTP/1.1
 Content-Type: application/json
 Accept: application/json
 Host: localhost:0
@@ -662,9 +662,9 @@ Content-Type: application/json;charset=UTF-8
 Content-Length: 170
 
 {
-  &quot;created&quot; : &quot;2018-09-27T02:03:07.170+0000&quot;,
-  &quot;updated&quot; : &quot;2018-09-27T02:03:07.170+0000&quot;,
-  &quot;id&quot; : 6,
+  &quot;created&quot; : &quot;2018-09-27T18:29:05.664+0000&quot;,
+  &quot;updated&quot; : &quot;2018-09-27T18:29:05.664+0000&quot;,
+  &quot;id&quot; : 5,
   &quot;firstName&quot; : &quot;firstName1&quot;,
   &quot;lastName&quot; : &quot;lastName1&quot;
 }</code></pre>
@@ -675,7 +675,7 @@ Content-Length: 170
 <h4 id="_curl_request">1.1.5. CURL request</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ curl 'http://localhost:0/customer/' -i -X POST \
+<pre class="CodeRay highlight"><code data-lang="bash">$ curl 'http://localhost:0/jpa/customer/' -i -X POST \
     -H 'Content-Type: application/json' \
     -H 'Accept: application/json' \
     -d '{
@@ -688,12 +688,12 @@ Content-Length: 170
 </div>
 </div>
 <div class="sect2">
-<h3 id="resource-customer-get">1.2. Get Customer</h3>
+<h3 id="resource-jpa-customer-get">1.2. Get Customer</h3>
 <div class="sect3">
 <h4 id="_request_structure_2">1.2.1. Request structure</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="http">GET /customer/1 HTTP/1.1
+<pre class="CodeRay highlight nowrap"><code data-lang="http">GET /jpa/customer/4 HTTP/1.1
 Accept: application/json
 Host: localhost:0</code></pre>
 </div>
@@ -702,7 +702,7 @@ Host: localhost:0</code></pre>
 <div class="sect3">
 <h4 id="_path_parameters">1.2.2. Path parameters</h4>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 1. /customer/{id}</caption>
+<caption class="title">Table 1. /jpa/customer/{id}</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -774,9 +774,9 @@ Content-Type: application/json;charset=UTF-8
 Content-Length: 170
 
 {
-  &quot;created&quot; : &quot;2018-09-27T02:03:06.778+0000&quot;,
-  &quot;updated&quot; : &quot;2018-09-27T02:03:06.778+0000&quot;,
-  &quot;id&quot; : 1,
+  &quot;created&quot; : &quot;2018-09-27T18:29:05.568+0000&quot;,
+  &quot;updated&quot; : &quot;2018-09-27T18:29:05.568+0000&quot;,
+  &quot;id&quot; : 4,
   &quot;firstName&quot; : &quot;firstName1&quot;,
   &quot;lastName&quot; : &quot;lastName1&quot;
 }</code></pre>
@@ -787,19 +787,19 @@ Content-Length: 170
 <h4 id="_curl_request_2">1.2.5. CURL request</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ curl 'http://localhost:0/customer/1' -i -X GET \
+<pre class="CodeRay highlight"><code data-lang="bash">$ curl 'http://localhost:0/jpa/customer/4' -i -X GET \
     -H 'Accept: application/json'</code></pre>
 </div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="resource-customer-list">1.3. Get all Customers</h3>
+<h3 id="resource-jpa-customer-list">1.3. Get all Customers</h3>
 <div class="sect3">
 <h4 id="_request_structure_3">1.3.1. Request structure</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="http">GET /customer/?page=0&amp;size=2147483647 HTTP/1.1
+<pre class="CodeRay highlight nowrap"><code data-lang="http">GET /jpa/customer/?page=0&amp;size=2147483647 HTTP/1.1
 Accept: application/json
 Host: localhost:0</code></pre>
 </div>
@@ -888,21 +888,21 @@ Content-Type: application/json;charset=UTF-8
 Content-Length: 518
 
 [ {
-  &quot;created&quot; : &quot;2018-09-27T02:03:07.077+0000&quot;,
-  &quot;updated&quot; : &quot;2018-09-27T02:03:07.077+0000&quot;,
-  &quot;id&quot; : 3,
+  &quot;created&quot; : &quot;2018-09-27T18:29:05.266+0000&quot;,
+  &quot;updated&quot; : &quot;2018-09-27T18:29:05.266+0000&quot;,
+  &quot;id&quot; : 1,
   &quot;firstName&quot; : &quot;firstName0&quot;,
   &quot;lastName&quot; : &quot;lastName0&quot;
 }, {
-  &quot;created&quot; : &quot;2018-09-27T02:03:07.083+0000&quot;,
-  &quot;updated&quot; : &quot;2018-09-27T02:03:07.083+0000&quot;,
-  &quot;id&quot; : 4,
+  &quot;created&quot; : &quot;2018-09-27T18:29:05.336+0000&quot;,
+  &quot;updated&quot; : &quot;2018-09-27T18:29:05.336+0000&quot;,
+  &quot;id&quot; : 2,
   &quot;firstName&quot; : &quot;firstName1&quot;,
   &quot;lastName&quot; : &quot;lastName1&quot;
 }, {
-  &quot;created&quot; : &quot;2018-09-27T02:03:07.087+0000&quot;,
-  &quot;updated&quot; : &quot;2018-09-27T02:03:07.087+0000&quot;,
-  &quot;id&quot; : 5,
+  &quot;created&quot; : &quot;2018-09-27T18:29:05.342+0000&quot;,
+  &quot;updated&quot; : &quot;2018-09-27T18:29:05.342+0000&quot;,
+  &quot;id&quot; : 3,
   &quot;firstName&quot; : &quot;firstName2&quot;,
   &quot;lastName&quot; : &quot;lastName2&quot;
 } ]</code></pre>
@@ -913,19 +913,19 @@ Content-Length: 518
 <h4 id="_curl_request_3">1.3.5. CURL request</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ curl 'http://localhost:0/customer/?page=0&amp;size=2147483647' -i -X GET \
+<pre class="CodeRay highlight"><code data-lang="bash">$ curl 'http://localhost:0/jpa/customer/?page=0&amp;size=2147483647' -i -X GET \
     -H 'Accept: application/json'</code></pre>
 </div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="resource-customers-by-last-name">1.4. Get Customers by Last Name</h3>
+<h3 id="resource-jpa-customers-by-last-name">1.4. Get Customers by Last Name</h3>
 <div class="sect3">
 <h4 id="_request_structure_4">1.4.1. Request structure</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="http">GET /customer/search/findAllByLastName/lastName1 HTTP/1.1
+<pre class="CodeRay highlight nowrap"><code data-lang="http">GET /jpa/customer/search/findAllByLastName/lastName1 HTTP/1.1
 Accept: application/json
 Host: localhost:0</code></pre>
 </div>
@@ -934,7 +934,7 @@ Host: localhost:0</code></pre>
 <div class="sect3">
 <h4 id="_path_parameters_2">1.4.2. Path parameters</h4>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 2. /customer/search/findAllByLastName/{lastName}</caption>
+<caption class="title">Table 2. /jpa/customer/search/findAllByLastName/{lastName}</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -1011,9 +1011,9 @@ Content-Type: application/json;charset=UTF-8
 Content-Length: 174
 
 [ {
-  &quot;created&quot; : &quot;2018-09-27T02:03:06.965+0000&quot;,
-  &quot;updated&quot; : &quot;2018-09-27T02:03:06.965+0000&quot;,
-  &quot;id&quot; : 2,
+  &quot;created&quot; : &quot;2018-09-27T18:29:05.744+0000&quot;,
+  &quot;updated&quot; : &quot;2018-09-27T18:29:05.744+0000&quot;,
+  &quot;id&quot; : 6,
   &quot;firstName&quot; : &quot;firstName1&quot;,
   &quot;lastName&quot; : &quot;lastName1&quot;
 } ]</code></pre>
@@ -1024,7 +1024,7 @@ Content-Length: 174
 <h4 id="_curl_request_4">1.4.5. CURL request</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ curl 'http://localhost:0/customer/search/findAllByLastName/lastName1' -i -X GET \
+<pre class="CodeRay highlight"><code data-lang="bash">$ curl 'http://localhost:0/jpa/customer/search/findAllByLastName/lastName1' -i -X GET \
     -H 'Accept: application/json'</code></pre>
 </div>
 </div>
@@ -1036,7 +1036,7 @@ Content-Length: 174
 <div id="footer">
 <div id="footer-text">
 Version 0.0.1<br>
-Last updated 2018-09-26 19:06:11 PDT
+Last updated 2018-09-27 11:35:23 PDT
 </div>
 </div>
 </body>
