@@ -23,25 +23,25 @@ import com.yosanai.spring.cloud.starter.sampledata.repository.CustomerOrderRepos
 import com.yosanai.spring.cloud.starter.samplerestservice.ResourceException;
 
 @RestController
-@RequestMapping("/customer-order/")
+@RequestMapping("jpa/customer-order")
 public class CustomerOrderController {
 
 	@Autowired
 	private CustomerOrderRepository repository;
 
-	@GetMapping("/")
+	@GetMapping
 	@JsonView(Views.Public.class)
 	public List<CustomerOrder> list(@NotNull final Pageable pageable) {
 		return repository.findAll(pageable).getContent();
 	}
 
-	@PostMapping("/")
+	@PostMapping
 	@JsonView(Views.Public.class)
 	public CustomerOrder save(@Valid @RequestBody CustomerOrder customerOrder) {
 		return repository.save(customerOrder);
 	}
 
-	@PostMapping("/{id}/order-item")
+	@PostMapping("{id}/order-item")
 	@JsonView(Views.Public.class)
 	public CustomerOrder addOrderItem(@PathVariable Long id, @Valid @RequestBody OrderItem orderItem) {
 		CustomerOrder ret = repository.findById(id)
@@ -50,13 +50,13 @@ public class CustomerOrderController {
 		return repository.save(ret);
 	}
 
-	@GetMapping("/{id}")
+	@GetMapping("{id}")
 	@JsonView(Views.Public.class)
 	public CustomerOrder get(@PathVariable Long id) {
 		return repository.findById(id).orElseThrow(() -> new ResourceException(getClass().getSimpleName(), "id", id));
 	}
 
-	@GetMapping("/search/findAllByCustomer/{customerId}")
+	@GetMapping("search/findAllByCustomer/{customerId}")
 	@JsonView(Views.Public.class)
 	public List<CustomerOrder> findByCustomer(@PathVariable Long customerId) {
 		return repository.findAllByCustomerId(customerId);

@@ -7,6 +7,7 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,31 +22,32 @@ import com.yosanai.spring.cloud.starter.sampledata.repository.CustomerRepository
 import com.yosanai.spring.cloud.starter.samplerestservice.ResourceException;
 
 @RestController
-@RequestMapping("/customer/")
+@RequestMapping("jpa/customer")
+@RepositoryRestResource
 public class CustomerController {
 
 	@Autowired
 	private CustomerRepository repository;
 
-	@GetMapping("/")
+	@GetMapping
 	@JsonView(Views.Public.class)
 	public List<Customer> list(@NotNull final Pageable pageable) {
 		return repository.findAll(pageable).getContent();
 	}
 
-	@PostMapping("/")
+	@PostMapping
 	@JsonView(Views.Public.class)
 	public Customer save(@Valid @RequestBody Customer customer) {
 		return repository.save(customer);
 	}
 
-	@GetMapping("/{id}")
+	@GetMapping("{id}")
 	@JsonView(Views.Public.class)
 	public Customer get(@PathVariable Long id) {
 		return repository.findById(id).orElseThrow(() -> new ResourceException(getClass().getSimpleName(), "id", id));
 	}
 
-	@GetMapping("/search/findAllByLastName/{lastName}")
+	@GetMapping("search/findAllByLastName/{lastName}")
 	@JsonView(Views.Public.class)
 	public List<Customer> getByLastName(@PathVariable String lastName) {
 		return repository.findAllByLastName(lastName);

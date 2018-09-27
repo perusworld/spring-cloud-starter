@@ -21,31 +21,31 @@ import com.yosanai.spring.cloud.starter.sampledata.repository.ProductRepository;
 import com.yosanai.spring.cloud.starter.samplerestservice.ResourceException;
 
 @RestController
-@RequestMapping("/product/")
+@RequestMapping("jpa/product")
 public class ProductController {
 
 	@Autowired
 	private ProductRepository repository;
 
-	@GetMapping("/")
+	@GetMapping
 	@JsonView(Views.Public.class)
 	public List<Product> list(@NotNull final Pageable pageable) {
 		return repository.findAll(pageable).getContent();
 	}
 
-	@PostMapping("/")
+	@PostMapping
 	@JsonView(Views.Public.class)
 	public Product save(@Valid @RequestBody Product product) {
 		return repository.save(product);
 	}
 
-	@GetMapping("/{id}")
+	@GetMapping("{id}")
 	@JsonView(Views.Public.class)
 	public Product get(@PathVariable Long id) {
 		return repository.findById(id).orElseThrow(() -> new ResourceException(getClass().getSimpleName(), "id", id));
 	}
 
-	@GetMapping("/search/findByName/{name}")
+	@GetMapping("search/findByName/{name}")
 	@JsonView(Views.Public.class)
 	public Product getByLastName(@PathVariable String name) {
 		return repository.findByName(name);
