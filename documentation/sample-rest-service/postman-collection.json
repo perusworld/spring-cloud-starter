@@ -1,0 +1,128 @@
+{
+  "info": {
+    "name": "Sample REST Service - Postman",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Sample Requests",
+      "item": [
+        {
+          "name": "customer/",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"firstName\" : \"firstName1\",\r\n  \"lastName\" : \"lastName1\",\r\n  \"sampleIgnoreInPublic\" : \"sampleIgnoreInPublic1\"\r\n}"
+            },
+            "url": {
+              "raw": "{{host}}/customer/",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "",
+                "customer",
+                ""
+              ]
+            }
+          }
+        },
+        {
+          "name": "customer/1",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": null,
+            "url": {
+              "raw": "{{host}}/customer/1",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "",
+                "customer",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "customer/",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": null,
+            "url": {
+              "raw": "{{host}}/customer/?page=0&size=2147483647",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "",
+                "customer",
+                ""
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "key": "size",
+                  "value": "2147483647"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "customer/search/findAllByLastName/lastName1",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": null,
+            "url": {
+              "raw": "{{host}}/customer/search/findAllByLastName/lastName1",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "",
+                "customer",
+                "search",
+                "findAllByLastName",
+                "lastName1"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
