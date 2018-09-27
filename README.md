@@ -59,3 +59,28 @@ docker-compose -f web-docker-compose.yml stop
 | Sample REST Service | [http://localhost:8081/](http://localhost:8081/) | | [http://localhost:9081/actuator/health](http://localhost:9081/actuator/health) | [http://localhost:8080/sample-rest-service/](http://localhost:8080/sample-rest-service/) |
 | Sample AMQP Service | | | [http://localhost:9083/actuator/health](http://localhost:9083/actuator/health) | |
 | Sample Spring Web | [http://localhost:8082/](http://localhost:8082/) | | [http://localhost:9082/actuator/health](http://localhost:9082/actuator/health) | [http://localhost:8080/sample-spring-web/](http://localhost:8080/sample-spring-web/) |
+
+
+## Documentation
+[html version](documentation/sample-rest-service/index.html), [pdf version](documentation/sample-rest-service/index.pdf), [postman collection](documentation/sample-rest-service/postman-collection.json), [insomnia collection](documentation/sample-rest-service/insomnia-collection.json), [swagger](documentation/sample-rest-service/swagger.json)
+
+### Generate Documentation
+Requires [wkhtmltopdf](https://wkhtmltopdf.org/index.html), [jq](https://stedolan.github.io/jq/), [restdocs-to-postman](https://github.com/fbenz/restdocs-to-postman), [swaggymnia](https://github.com/mlabouardy/swaggymnia)
+
+```bash
+mvn clean package
+cd  documentation/sample-rest-service
+cp ../../sample-rest-service/target/generated-docs/index.html .
+wkhtmltopdf index.html index.pdf
+cd ../../sample-rest-service/target
+restdocs-to-postman --input generated-snippets --export-format postman --determine-folder secondLastFolder --replacements ../../documentation/config/replacements.json --output ../../documentation/sample-rest-service/postman-collection.json
+restdocs-to-postman --input generated-snippets --export-format insomnia --determine-folder secondLastFolder --replacements ../../documentation/config/replacements.json --output ../../documentation/sample-rest-service/insomnia-collection.json
+cd  ../../documentation/sample-rest-service
+jq '.info.name="Sample REST Service - Postman"' postman-collection.json > postman-collection.tmp
+jq '.item[0].name="Sample Requests"' postman-collection.tmp > postman-collection.json
+rm postman-collection.tmp
+jq '.resources[0].name="Sample REST Service - Insomnia Sample Requests"' insomnia-collection.json > insomnia-collection.tmp
+mv insomnia-collection.tmp insomnia-collection.json
+swaggymnia generate -insomnia insomnia-collection.json -config ../config/swaggymnia.json -output json
+cd  ../../
+```
