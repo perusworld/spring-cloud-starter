@@ -12,94 +12,94 @@ Sample REST Service Documentation
 [[resources-customer]]
 == Customer
 
-[[resource-customer-create]]
+[[resource-jpa-customer-create]]
 === Create Customer
 
 ==== Request structure
 
-include::{snippets}/customer-create/http-request.adoc[]
+include::{snippets}/jpa-customer-create/http-request.adoc[]
 
 ==== Request fields
 
-include::{snippets}/customer-create/request-fields.adoc[]
+include::{snippets}/jpa-customer-create/request-fields.adoc[]
 
 ==== Response fields
 
-include::{snippets}/customer-create/response-fields.adoc[]
+include::{snippets}/jpa-customer-create/response-fields.adoc[]
 
 ==== Example response
 
-include::{snippets}/customer-create/http-response.adoc[]
+include::{snippets}/jpa-customer-create/http-response.adoc[]
 
 ==== CURL request
 
-include::{snippets}/customer-create/curl-request.adoc[]
+include::{snippets}/jpa-customer-create/curl-request.adoc[]
 
-[[resource-customer-get]]
+[[resource-jpa-customer-get]]
 === Get Customer
 
 ==== Request structure
 
-include::{snippets}/customer-get/http-request.adoc[]
+include::{snippets}/jpa-customer-get/http-request.adoc[]
 
 ==== Path parameters
 
-include::{snippets}/customer-get/path-parameters.adoc[]
+include::{snippets}/jpa-customer-get/path-parameters.adoc[]
 
 ==== Response fields
 
-include::{snippets}/customer-get/response-fields.adoc[]
+include::{snippets}/jpa-customer-get/response-fields.adoc[]
 
 ==== Example response
 
-include::{snippets}/customer-get/http-response.adoc[]
+include::{snippets}/jpa-customer-get/http-response.adoc[]
 
 ==== CURL request
 
-include::{snippets}/customer-get/curl-request.adoc[]
+include::{snippets}/jpa-customer-get/curl-request.adoc[]
 
-[[resource-customer-list]]
+[[resource-jpa-customer-list]]
 === Get all Customers
 
 ==== Request structure
 
-include::{snippets}/customer-list/http-request.adoc[]
+include::{snippets}/jpa-customer-list/http-request.adoc[]
 
 ==== Request fields
 
-include::{snippets}/customer-list/request-parameters.adoc[]
+include::{snippets}/jpa-customer-list/request-parameters.adoc[]
 
 ==== Response fields
 
-include::{snippets}/customer-list/response-fields.adoc[]
+include::{snippets}/jpa-customer-list/response-fields.adoc[]
 
 ==== Example response
 
-include::{snippets}/customer-list/http-response.adoc[]
+include::{snippets}/jpa-customer-list/http-response.adoc[]
 
 ==== CURL request
 
-include::{snippets}/customer-list/curl-request.adoc[]
+include::{snippets}/jpa-customer-list/curl-request.adoc[]
 
-[[resource-customers-by-last-name]]
+[[resource-jpa-customers-by-last-name]]
 === Get Customers by Last Name
 
 ==== Request structure
 
-include::{snippets}/customers-by-last-name/http-request.adoc[]
+include::{snippets}/jpa-customers-by-last-name/http-request.adoc[]
 
 ==== Path parameters
 
-include::{snippets}/customers-by-last-name/path-parameters.adoc[]
+include::{snippets}/jpa-customers-by-last-name/path-parameters.adoc[]
 
 ==== Response fields
 
-include::{snippets}/customers-by-last-name/response-fields.adoc[]
+include::{snippets}/jpa-customers-by-last-name/response-fields.adoc[]
 
 ==== Example response
 
-include::{snippets}/customers-by-last-name/http-response.adoc[]
+include::{snippets}/jpa-customers-by-last-name/http-response.adoc[]
 
 ==== CURL request
 
-include::{snippets}/customers-by-last-name/curl-request.adoc[]
+include::{snippets}/jpa-customers-by-last-name/curl-request.adoc[]
