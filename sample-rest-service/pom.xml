@@ -12,12 +12,16 @@
 	<description>Sample Rest Service</description>
 	<dependencies>
 		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-rest</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -51,7 +55,7 @@
 	<properties>
 		<spring-restdocs.version>2.0.2.RELEASE</spring-restdocs.version>
 		<ascii-doctor-maven-plugin.version>1.5.6</ascii-doctor-maven-plugin.version>
-		<maven.build.timestamp.format>yyyy-MM-dd HH</maven.build.timestamp.format>
+		<maven.build.timestamp.format>yyyy-MM-dd</maven.build.timestamp.format>
 	</properties>
 	<build>
 		<plugins>
