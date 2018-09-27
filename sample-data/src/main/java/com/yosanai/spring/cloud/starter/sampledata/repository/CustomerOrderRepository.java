@@ -5,11 +5,13 @@ import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import com.yosanai.spring.cloud.starter.sampledata.model.Customer;
 import com.yosanai.spring.cloud.starter.sampledata.model.CustomerOrder;
 import com.yosanai.spring.cloud.starter.sampledata.projection.OrderSummary;
 
+@RepositoryRestResource
 public interface CustomerOrderRepository extends PagingAndSortingRepository<CustomerOrder, Long> {
 	public List<CustomerOrder> findAllByCustomer(Customer customer);
 
