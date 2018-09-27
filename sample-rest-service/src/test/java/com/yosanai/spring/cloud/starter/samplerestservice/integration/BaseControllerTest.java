@@ -1,6 +1,6 @@
 package com.yosanai.spring.cloud.starter.samplerestservice.integration;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -53,10 +53,6 @@ public class BaseControllerTest {
 
 	@Autowired
 	protected TestRestTemplate restTemplate;
-
-	protected String getURL(String suffix) {
-		return String.format("http://localhost:%d/%s", port, suffix);
-	}
 
 	protected String getURL(Class<?> classDef, String... path) {
 		return String.format("http://localhost:%d%s/%s", port, classDef.getAnnotation(RequestMapping.class).value()[0],

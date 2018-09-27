@@ -1,7 +1,6 @@
 package com.yosanai.spring.cloud.starter.samplerestservice.integration;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 import java.util.Date;
 import java.util.Map;
@@ -13,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 
 import com.yosanai.spring.cloud.starter.sampleapi.SampleRequest;
 import com.yosanai.spring.cloud.starter.sampleapi.SampleResponse;
+import com.yosanai.spring.cloud.starter.samplerestservice.controller.SampleRESTServiceController;
 
 import lombok.extern.java.Log;
 
@@ -21,14 +21,15 @@ public class SampleRESTServiceControllerTest extends BaseControllerTest {
 
 	@Test
 	public void testIndexPage() throws Exception {
-		assertEquals(restTemplate.getForObject(getURL(""), String.class), "Sample REST Service");
+		assertEquals(restTemplate.getForObject(getURL(SampleRESTServiceController.class, "index"), String.class),
+				"Sample REST Service");
 	}
 
 	@Test
 	public void testCallSampleAPI() throws Exception {
 		SampleRequest request = new SampleRequest(rndStr(), rndInt(), new Date());
-		SampleResponse response = restTemplate.postForObject(getURL("sample-api"), new HttpEntity<>(request),
-				SampleResponse.class);
+		SampleResponse response = restTemplate.postForObject(getURL(SampleRESTServiceController.class, "call-api"),
+				new HttpEntity<>(request), SampleResponse.class);
 		assertNotNull(response);
 		assertEquals(request.getADate(), response.getADate());
 		assertEquals(request.getAnInteger(), response.getAnInteger());

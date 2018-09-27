@@ -12,9 +12,7 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -117,13 +115,10 @@ public class DocGenTest {
 		return RandomStringUtils.random(10, false, true);
 	}
 
-	protected String getPath(Class<?> classDef, String... path) {
-		return String.format("%s/%s", getRequestRootPath(classDef),
-				null == path ? "" : Stream.of(path).collect(Collectors.joining("/")));
-	}
-
 	public String getRequestRootPath(Class<?> classDef) {
-		return classDef.getAnnotation(RequestMapping.class).value()[0];
+		return "/" + (0 < classDef.getAnnotation(RequestMapping.class).value().length
+				? classDef.getAnnotation(RequestMapping.class).value()[0]
+				: classDef.getAnnotation(RequestMapping.class).path()[0]) + "/";
 	}
 
 	protected String encodeAsParams(Object... params) {
@@ -151,7 +146,7 @@ public class DocGenTest {
 
 	public <T> T create(Class<?> classDef, Class<T> response, T obj, boolean genDoc) {
 		T ret = null;
-		String url = getPath(classDef, "");
+		String url = getRequestRootPath(classDef);
 		try {
 			MockHttpServletRequestBuilder post = post(url).contentType(MediaType.APPLICATION_JSON)
 					.accept(MediaType.APPLICATION_JSON).content(objectMapper.writeValueAsString(obj));
@@ -172,7 +167,7 @@ public class DocGenTest {
 	}
 
 	public <T> List<T> list(Class<?> classDef, Class<T> response, boolean genDoc, Object... args) {
-		MockHttpServletRequestBuilder requestBuilder = get(getURLWithParam(getPath(classDef, ""), args))
+		MockHttpServletRequestBuilder requestBuilder = get(getURLWithParam(getRequestRootPath(classDef), args))
 				.accept(MediaType.APPLICATION_JSON);
 		List<T> ret = null;
 		try {
@@ -272,14 +267,14 @@ public class DocGenTest {
 	}
 
 	@Test
-	public void customerCreate() {
+	public void jpaCustomerCreate() {
 		this.document = defaultDocument(customerResponseFieldDescriptors, customerRequestFieldDescriptors);
 		Customer obj = create(CustomerController.class, Customer.class, someCustomer(1), true);
 		assertNotNull(obj);
 	}
 
 	@Test
-	public void customerGet() {
+	public void jpaCustomerGet() {
 		this.document = defaultDocument(customerResponseFieldDescriptors, getPathParameters);
 		Customer obj = create(CustomerController.class, Customer.class, someCustomer(1), false);
 		assertNotNull(obj);
@@ -288,7 +283,7 @@ public class DocGenTest {
 	}
 
 	@Test
-	public void customerList() {
+	public void jpaCustomerList() {
 		this.document = defaultDocument(customerResponseArrayFieldDescriptors, pageRequestParameters);
 		IntStream.range(0, INSERT_SIZE).forEach(idx -> {
 			Customer obj = create(CustomerController.class, Customer.class, someCustomer(idx), false);
@@ -300,7 +295,7 @@ public class DocGenTest {
 	}
 
 	@Test
-	public void customersByLastName() {
+	public void jpaCustomersByLastName() {
 		this.document = defaultDocument(customerResponseArrayFieldDescriptors, lastNamePathParameters);
 		Customer obj = create(CustomerController.class, Customer.class, someCustomer(1), false);
 		assertNotNull(obj);
