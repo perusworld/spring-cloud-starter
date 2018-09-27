@@ -22,6 +22,11 @@ import lombok.ToString;
 @ToString
 @Entity
 @JsonView(Views.Public.class)
+/**
+ * 
+ * Product
+ *
+ */
 public class Product extends Auditable {
 
 	/**
@@ -30,10 +35,22 @@ public class Product extends Auditable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	/**
+	 * Id
+	 */
 	private Long id;
 	@Column(unique = true)
+	/**
+	 * Product name
+	 */
 	private String name;
+	/**
+	 * Product description
+	 */
 	private String description;
+	/**
+	 * Product cost
+	 */
 	private int cost;
 
 	public Product(String name, String description, int cost) {

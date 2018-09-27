@@ -25,6 +25,10 @@ import lombok.ToString;
 @ToString
 @Entity
 @JsonView(Views.Public.class)
+/**
+ * Customer
+ * 
+ */
 public class Customer extends Auditable {
 	/**
 	 * 
@@ -32,13 +36,28 @@ public class Customer extends Auditable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	/**
+	 * Id
+	 */
 	private Long id;
+	/**
+	 * First name
+	 */
 	private String firstName;
+	/**
+	 * Last name
+	 */
 	private String lastName;
+	/**
+	 * Sample field that will be included only with internal view
+	 */
 	@JsonView(Views.Internal.class)
 	private String sampleIgnoreInPublic;
 	@OneToMany(mappedBy = "customer", orphanRemoval = true)
 	@JsonView(Views.Internal.class)
+	/**
+	 * Orders by the customer
+	 */
 	private Set<CustomerOrder> orders;
 
 	public void addItem(CustomerOrder order) {

@@ -35,18 +35,29 @@ public class CustomerController {
 		return repository.findAll(pageable).getContent();
 	}
 
+	/**
+	 * Create or update customer
+	 */
 	@PostMapping
 	@JsonView(Views.Public.class)
 	public Customer save(@Valid @RequestBody Customer customer) {
 		return repository.save(customer);
 	}
 
+	/**
+	 * Get customer
+	 * @param id Id of the customer object
+	 */
 	@GetMapping("{id}")
 	@JsonView(Views.Public.class)
 	public Customer get(@PathVariable Long id) {
 		return repository.findById(id).orElseThrow(() -> new ResourceException(getClass().getSimpleName(), "id", id));
 	}
-
+	
+	/**
+	 * Find all customers by last name
+	 * @param lastName last name to search by
+	 */
 	@GetMapping("search/findAllByLastName/{lastName}")
 	@JsonView(Views.Public.class)
 	public List<Customer> getByLastName(@PathVariable String lastName) {

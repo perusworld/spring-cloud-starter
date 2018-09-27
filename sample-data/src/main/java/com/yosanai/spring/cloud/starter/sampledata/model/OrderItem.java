@@ -25,6 +25,10 @@ import lombok.ToString;
 @ToString
 @Entity
 @JsonView(Views.Public.class)
+/**
+ * Order Item
+ *
+ */
 public class OrderItem implements Serializable {
 	/**
 	 * 
@@ -32,16 +36,29 @@ public class OrderItem implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	/**
+	 * Id
+	 */
 	private Long id;
 
 	@ManyToOne
 	@JoinColumn(nullable = false)
 	@JsonView(Views.Internal.class)
+	/**
+	 * Customer's order to which this order item is associated with
+	 */
 	private CustomerOrder customerOrder;
 
 	@ManyToOne
+	/**
+	 * Product
+	 */
 	private Product product;
 
+	/**
+	 * Quantity
+	 * 
+	 */
 	private int quantity;
 
 	public OrderItem(Product product, int quantity) {

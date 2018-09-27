@@ -30,6 +30,10 @@ import lombok.ToString;
 @ToString
 @Entity
 @JsonView(Views.Public.class)
+/**
+ * Customer Order
+ *
+ */
 public class CustomerOrder extends Auditable {
 
 	/**
@@ -38,15 +42,27 @@ public class CustomerOrder extends Auditable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	/**
+	 * Id
+	 */
 	private Long id;
 
 	@ManyToOne
 	@JoinColumn(nullable = false)
+	/**
+	 * Customer to which the order is associated with
+	 */
 	private Customer customer;
 
 	@OneToMany(mappedBy = "customerOrder", orphanRemoval = true, cascade = CascadeType.ALL)
+	/**
+	 * Items in this order
+	 */
 	private Set<OrderItem> orderItems;
 
+	/**
+	 * Total cost of the order
+	 */
 	private int totalCost;
 
 	public void addOrderItem(OrderItem item) {
