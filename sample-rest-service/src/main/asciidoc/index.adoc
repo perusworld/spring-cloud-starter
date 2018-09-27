@@ -1,0 +1,105 @@
+= Sample REST Service
+Sample REST Service Documentation
+:toc: left
+:sectnums:
+
+[introduction]
+= Introduction
+
+[[resources]]
+= Resources
+
+[[resources-customer]]
+== Customer
+
+[[resource-customer-create]]
+=== Create Customer
+
+==== Request structure
+
+include::{snippets}/customer-create/http-request.adoc[]
+
+==== Request fields
+
+include::{snippets}/customer-create/request-fields.adoc[]
+
+==== Response fields
+
+include::{snippets}/customer-create/response-fields.adoc[]
+
+==== Example response
+
+include::{snippets}/customer-create/http-response.adoc[]
+
+==== CURL request
+
+include::{snippets}/customer-create/curl-request.adoc[]
+
+[[resource-customer-get]]
+=== Get Customer
+
+==== Request structure
+
+include::{snippets}/customer-get/http-request.adoc[]
+
+==== Path parameters
+
+include::{snippets}/customer-get/path-parameters.adoc[]
+
+==== Response fields
+
+include::{snippets}/customer-get/response-fields.adoc[]
+
+==== Example response
+
+include::{snippets}/customer-get/http-response.adoc[]
+
+==== CURL request
+
+include::{snippets}/customer-get/curl-request.adoc[]
+
+[[resource-customer-list]]
+=== Get all Customers
+
+==== Request structure
+
+include::{snippets}/customer-list/http-request.adoc[]
+
+==== Request fields
+
+include::{snippets}/customer-list/request-parameters.adoc[]
+
+==== Response fields
+
+include::{snippets}/customer-list/response-fields.adoc[]
+
+==== Example response
+
+include::{snippets}/customer-list/http-response.adoc[]
+
+==== CURL request
+
+include::{snippets}/customer-list/curl-request.adoc[]
+
+[[resource-customers-by-last-name]]
+=== Get Customers by Last Name
+
+==== Request structure
+
+include::{snippets}/customers-by-last-name/http-request.adoc[]
+
+==== Path parameters
+
+include::{snippets}/customers-by-last-name/path-parameters.adoc[]
+
+==== Response fields
+
+include::{snippets}/customers-by-last-name/response-fields.adoc[]
+
+==== Example response
+
+include::{snippets}/customers-by-last-name/http-response.adoc[]
+
+==== CURL request
+
+include::{snippets}/customers-by-last-name/curl-request.adoc[]
