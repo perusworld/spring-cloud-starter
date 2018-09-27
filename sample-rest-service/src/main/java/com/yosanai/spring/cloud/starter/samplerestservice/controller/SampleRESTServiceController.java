@@ -14,17 +14,18 @@ import com.yosanai.spring.cloud.starter.sampleapi.SampleRequest;
 import com.yosanai.spring.cloud.starter.sampleapi.SampleResponse;
 
 @RestController
+@RequestMapping("sample")
 public class SampleRESTServiceController {
 
 	@Autowired
 	private SampleAPI sampleAPI;
 
-	@RequestMapping("/")
+	@RequestMapping("index")
 	public String getIndex() {
 		return "Sample REST Service";
 	}
 
-	@RequestMapping(name = "/sample-api", method = RequestMethod.POST)
+	@RequestMapping(path = "call-api", method = RequestMethod.POST)
 	@ResponseBody
 	public SampleResponse callSampleAPI(@Valid @RequestBody SampleRequest req) {
 		return sampleAPI.call(req).join();
