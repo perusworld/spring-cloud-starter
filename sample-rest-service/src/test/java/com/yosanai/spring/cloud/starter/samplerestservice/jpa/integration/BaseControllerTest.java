@@ -1,4 +1,4 @@
-package com.yosanai.spring.cloud.starter.samplerestservice.integration;
+package com.yosanai.spring.cloud.starter.samplerestservice.jpa.integration;
 
 import static org.junit.Assert.*;
 
@@ -46,7 +46,7 @@ public class BaseControllerTest {
 	public static final int BATCH_SIZE = 5;
 
 	@LocalServerPort
-	private int port;
+	protected int port;
 
 	@Value("${local.management.port}")
 	private int mgmtPort;
@@ -55,7 +55,7 @@ public class BaseControllerTest {
 	protected TestRestTemplate restTemplate;
 
 	protected String getURL(Class<?> classDef, String... path) {
-		return String.format("http://localhost:%d%s/%s", port, classDef.getAnnotation(RequestMapping.class).value()[0],
+		return String.format("http://localhost:%d/%s/%s", port, classDef.getAnnotation(RequestMapping.class).value()[0],
 				null == path ? "" : Stream.of(path).collect(Collectors.joining("/")));
 	}
 

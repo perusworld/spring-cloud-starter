@@ -67,4 +67,11 @@ public class OrderItem implements Serializable {
 		this.quantity = quantity;
 	}
 
+	public OrderItem(CustomerOrder customerOrder, Product product, int quantity) {
+		super();
+		this.customerOrder = customerOrder;
+		this.product = product;
+		this.quantity = quantity;
+	}
+
 }

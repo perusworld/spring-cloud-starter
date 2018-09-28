@@ -1,4 +1,4 @@
-package com.yosanai.spring.cloud.starter.samplerestservice.integration;
+package com.yosanai.spring.cloud.starter.samplerestservice.jpa.integration;
 
 import static org.junit.Assert.*;
 

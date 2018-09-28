@@ -21,7 +21,7 @@ import com.yosanai.spring.cloud.starter.sampledata.repository.ProductRepository;
 import com.yosanai.spring.cloud.starter.samplerestservice.ResourceException;
 
 @RestController
-@RequestMapping("jpa/product")
+@RequestMapping("jpa/products")
 public class ProductController {
 
 	@Autowired

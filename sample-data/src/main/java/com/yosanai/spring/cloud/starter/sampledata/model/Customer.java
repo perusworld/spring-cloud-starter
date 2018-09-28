@@ -81,4 +81,12 @@ public class Customer extends Auditable {
 		this.lastName = lastName;
 		this.sampleIgnoreInPublic = sampleIgnoreInPublic;
 	}
+
+	public Customer(Long id) {
+		super();
+		this.id = id;
+	}
+	
+	
+	
 }

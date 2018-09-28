@@ -14,6 +14,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 
+import org.springframework.data.rest.core.annotation.RestResource;
+
 import com.fasterxml.jackson.annotation.JsonView;
 import com.yosanai.spring.cloud.starter.sampledata.Views;
 
@@ -52,6 +54,7 @@ public class CustomerOrder extends Auditable {
 	/**
 	 * Customer to which the order is associated with
 	 */
+	@RestResource(exported = false)
 	private Customer customer;
 
 	@OneToMany(mappedBy = "customerOrder", orphanRemoval = true, cascade = CascadeType.ALL)

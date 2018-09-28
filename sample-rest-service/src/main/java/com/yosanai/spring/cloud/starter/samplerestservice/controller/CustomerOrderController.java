@@ -23,7 +23,7 @@ import com.yosanai.spring.cloud.starter.sampledata.repository.CustomerOrderRepos
 import com.yosanai.spring.cloud.starter.samplerestservice.ResourceException;
 
 @RestController
-@RequestMapping("jpa/customer-order")
+@RequestMapping("jpa/customer-orders")
 public class CustomerOrderController {
 
 	@Autowired
@@ -65,7 +65,7 @@ public class CustomerOrderController {
 	@GetMapping("/{customerId}/order-summary")
 	@JsonView(Views.Public.class)
 	public List<OrderSummary> getOrderSummary(@NotNull @PathVariable Long customerId) {
-		return repository.orderSummaryByDay(customerId);
+		return repository.summaryByDayForCustomerId(customerId);
 	}
 
 }

@@ -1,8 +1,6 @@
 package com.yosanai.spring.cloud.starter.sampledata;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -102,7 +100,7 @@ public class CustomerOrderTest extends BaseTest {
 			assertNotNull(orders);
 			assertEquals(BATCH_SIZE, orders.size());
 			flush();
-			Iterable<OrderSummary> summaries = customerOrderRepository.orderSummaryByDay(savedCustomer);
+			Iterable<OrderSummary> summaries = customerOrderRepository.summaryByDayForCustomer(savedCustomer);
 			assertNotNull(summaries);
 			summaries.forEach(summary -> {
 				log.info(String.format("%s, %d, %d", summary.getOrderDate(), summary.getSalesAmount(),
@@ -111,7 +109,7 @@ public class CustomerOrderTest extends BaseTest {
 				assertTrue(0 < summary.getSalesAmount());
 			});
 
-			summaries = customerOrderRepository.orderSummaryByDay(savedCustomer.getId());
+			summaries = customerOrderRepository.summaryByDayForCustomerId(savedCustomer.getId());
 			assertNotNull(summaries);
 			summaries.forEach(summary -> {
 				log.info(String.format("%s, %d, %d", summary.getOrderDate(), summary.getSalesAmount(),

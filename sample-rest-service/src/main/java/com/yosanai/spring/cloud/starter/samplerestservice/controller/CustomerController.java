@@ -22,7 +22,7 @@ import com.yosanai.spring.cloud.starter.sampledata.repository.CustomerRepository
 import com.yosanai.spring.cloud.starter.samplerestservice.ResourceException;
 
 @RestController
-@RequestMapping("jpa/customer")
+@RequestMapping("jpa/customers")
 @RepositoryRestResource
 public class CustomerController {
 
@@ -46,17 +46,21 @@ public class CustomerController {
 
 	/**
 	 * Get customer
-	 * @param id Id of the customer object
+	 * 
+	 * @param id
+	 *            Id of the customer object
 	 */
 	@GetMapping("{id}")
 	@JsonView(Views.Public.class)
 	public Customer get(@PathVariable Long id) {
 		return repository.findById(id).orElseThrow(() -> new ResourceException(getClass().getSimpleName(), "id", id));
 	}
-	
+
 	/**
 	 * Find all customers by last name
-	 * @param lastName last name to search by
+	 * 
+	 * @param lastName
+	 *            last name to search by
 	 */
 	@GetMapping("search/findAllByLastName/{lastName}")
 	@JsonView(Views.Public.class)

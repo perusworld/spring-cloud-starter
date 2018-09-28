@@ -15,3 +15,4 @@ spring:
 logging:
   level:
     com.yosanai: DEBUG
+    org.springframework: WARN
